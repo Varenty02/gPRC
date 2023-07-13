@@ -9,6 +9,35 @@ message SumRequest{
 message SumResponse{
   int32 result=1;
 }
+message PNDRequest{
+  int32 number=1;
+}
+message PNDResponse{
+  int32 result=1;
+}
+message AverageRequest{
+  float num=1;
+}
+message AverageResponse{
+  float result=1;
+}
+message MaxRequest{
+  float num=1;
+}
+message MaxResponse{
+  float result=1;
+}
+message SquareRequest{
+  float num=1;
+}
+message SquareResponse{
+  float result=1;
+}
 service CalculatorService{
   rpc Sum(SumRequest) returns (SumResponse){}
+  rpc SumWithDeadline(SumRequest) returns (SumResponse){}
+  rpc PrimeNumberDecomposition(PNDRequest) returns (stream PNDResponse){}
+  rpc Average(stream AverageRequest) returns (AverageResponse){}
+  rpc Max(stream MaxRequest) returns (stream MaxResponse){}
+  rpc Square(SquareRequest) returns ( SquareResponse){}
 }
